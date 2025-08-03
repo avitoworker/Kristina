@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кристина</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background: #0f0a1a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Фон с клубничками */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff3e6d" opacity="0.1"><path d="M12 2C13.1 2 14 2.9 14 4S13.1 6 12 6 10 5.1 10 4 10.9 2 12 2m4.5 5.1c-.3-.3-.8-.3-1.1 0l-1.9 1.9c-.3.3-.3.8 0 1.1.3.3.8.3 1.1 0l1.9-1.9c.4-.3.4-.8 0-1.1m-9 0c-.3-.3-.8-.3-1.1 0l-1.9 1.9c-.3.3-.3.8 0 1.1.3.3.8.3 1.1 0l1.9-1.9c.3-.3.3-.8 0-1.1M12 11c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6m0 2c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4m-2 4c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2-2 .9-2 2z"/></svg>');
+            background-size: 100px;
+            opacity: 0.15;
+            filter: blur(2px);
+            z-index: -1;
+        }
+        
+        /* Основной контейнер */
+        .container {
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            background: rgba(20, 10, 35, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 62, 109, 0.2);
+        }
+        
+        /* Анимация свечения */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff3e6d, #ff9a5a, #ff3e6d);
+            background-size: 200%;
+            z-index: -1;
+            border-radius: 22px;
+            opacity: 0;
+            transition: 0.5s;
+            animation: glow 4s linear infinite;
+        }
+        
+        @keyframes glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container:hover::before {
+            opacity: 0.3;
+        }
+        
+        /* Аватарка */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 62, 109, 0.5);
+            box-shadow: 0 5px 20px rgba(255, 62, 109, 0.3);
+            margin: 0 auto 15px;
+            transition: transform 0.3s;
+        }
+        
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Имя */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Кнопки */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-telegram {
+            background: linear-gradient(45deg, #0088cc, #26a5e4);
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+        }
+        
+        .btn-channel {
+            background: linear-gradient(45deg, #9467fe, #6f42c1);
+            box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+        }
+        
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Мелкие детали (клубнички в углах) */
+        .sticker {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 20px;
+            animation: float 5s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        .sticker-1 { top: 10px; left: 10px; animation-delay: 0s; }
+        .sticker-2 { bottom: 10px; right: 10px; animation-delay: 1s; }
+        .sticker-3 { top: 10px; right: 10px; animation-delay: 2s; }
+        .sticker-4 { bottom: 10px; left: 10px; animation-delay: 3s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Аватарка (замените src на свою картинку) -->
+        <img src="avatar.jpg" alt="Кристина" class="avatar">
+        
+        <h1>Кристина</h1>
+        
+        <!-- Кнопки (замените href на свои ссылки) -->
+        <a href="https://t.me/your_username" class="btn btn-telegram">
+            <i class="fab fa-telegram"></i> Telegram
+        </a>
+        
+        <a href="https://t.me/your_channel" class="btn btn-channel">
+            <i class="fab fa-telegram"></i> Канал
+        </a>
+        
+        <a href="https://instagram.com/your_username" class="btn btn-instagram">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+        
+        <!-- Декоративные клубнички -->
+        <span class="sticker sticker-1">🍓</span>
+        <span class="sticker sticker-2">🍓</span>
+        <span class="sticker sticker-3">🍓</span>
+        <span class="sticker sticker-4">🍓</span>
+    </div>
+</body>
+</html>
